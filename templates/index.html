@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stray Dog Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🐶 Stray Dog Detection + UUID Logger</h1>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="video">🎞️ Upload Video:</label>
+      <input type="file" name="video" accept="video/*" required />
+      <button type="submit">📤 Upload & Detect</button>
+    </form>
+
+    <form action="/webcam" method="post">
+      <button type="submit" class="webcam-btn">📷 Run Webcam Detection</button>
+    </form>
+
+    {% if output_video %}
+      <h2>🎬 Output:</h2>
+      <video controls width="640">
+        <source src="{{ url_for('download_file', filename=output_video) }}" type="video/mp4">
+      </video>
+      <br>
+      <a href="{{ url_for('download_file', filename=output_video) }}" class="btn">⬇️ Download Video</a>
+    {% endif %}
+
+    {% if log_file %}
+      <a href="{{ url_for('download_file', filename=log_file) }}" class="btn">📄 Download JSON Log</a>
+    {% endif %}
+  </div>
+</body>
+</html>
+
+
+
