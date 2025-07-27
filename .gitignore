@@ -1,0 +1,21 @@
+# Byte-compiled / cache / logs
+__pycache__/
+*.py[cod]
+*.log
+
+# Environment / models
+yolov8env/
+venv/
+*.pt
+
+# Output and uploads
+output/
+uploads/
+logs/
+
+# SQLite DB (if added later)
+*.sqlite3
+
+# System
+.DS_Store
+Thumbs.db
